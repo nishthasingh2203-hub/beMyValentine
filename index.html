@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Be My Valentine?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4ecd, #ffc371);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Comic Sans MS", "Poppins", cursive;
+  overflow: hidden;
+}
+
+/* Floating background elements */
+.bg-item {
+  position: absolute;
+  font-size: 30px;
+  animation: floatUp 14s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(120vh) rotate(0deg); }
+  100% { transform: translateY(-130vh) rotate(360deg); }
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+  max-width: 360px;
+  z-index: 2;
+}
+
+.header {
+  font-size: 22px;
+  font-weight: bold;
+  color: #6a0572;
+  margin-bottom: 10px;
+}
+
+h1 {
+  color: #ff2e63;
+}
+
+p {
+  color: #444;
+  margin-bottom: 25px;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+button {
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.15);
+}
+
+.yes {
+  background: #ff2e63;
+  color: white;
+}
+
+.no {
+  background: #ccc;
+}
+
+.message {
+  display: none;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #ff2e63;
+}
+
+/* Couple section */
+.couple {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Person base */
+.person {
+  width: 100px;
+  text-align: center;
+  animation: bounce 3s infinite;
+}
+
+/* Name */
+.name {
+  margin-top: 6px;
+  font-weight: bold;
+  color: #6a0572;
+}
+
+/* Boy */
+.boy .head {
+  width: 60px;
+  height: 60px;
+  background: #8d5524;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+}
+
+.boy .hair {
+  width: 65px;
+  height: 28px;
+  background: #222;
+  position: absolute;
+  top: -5px;
+  left: -3px;
+  border-radius: 50%;
+}
+
+.boy .glasses {
+  position: absolute;
+  top: 22px;
+  left: 12px;
+  font-size: 22px;
+}
+
+.boy .body {
+  width: 50px;
+  height: 70px;
+  background: #4d96ff;
+  border-radius: 15px;
+  margin: 5px auto 0;
+}
+
+/* Girl */
+.girl .head {
+  width: 60px;
+  height: 60px;
+  background: #d2a679;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+}
+
+.girl .hair {
+  width: 85px;
+  height: 40px;
+  background: #3a1c1c;
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  border-radius: 50%;
+}
+
+.girl .hair::after {
+  content: "";
+  width: 85px;
+  height: 22px;
+  background: #3a1c1c;
+  position: absolute;
+  bottom: -12px;
+  border-radius: 50%;
+}
+
+.girl .body {
+  width: 50px;
+  height: 70px;
+  background: #ff7eb3;
+  border-radius: 15px;
+  margin: 5px auto 0;
+}
+
+/* Heart */
+.heart {
+  font-size: 32px;
+  animation: heartbeat 1.2s infinite;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating background: sun, moon, flowers -->
+<div class="bg-item" style="left:5%; animation-delay:0s;">🌸</div>
+<div class="bg-item" style="left:15%; animation-delay:2s;">🌺</div>
+<div class="bg-item" style="left:25%; animation-delay:4s;">🌼</div>
+<div class="bg-item" style="left:35%; animation-delay:1s;">🌹</div>
+<div class="bg-item" style="left:45%; animation-delay:3s;">🌷</div>
+<div class="bg-item" style="left:60%; animation-delay:0s;">🌙</div>
+<div class="bg-item" style="left:70%; animation-delay:2s;">☀️</div>
+<div class="bg-item" style="left:80%; animation-delay:4s;">🌸</div>
+<div class="bg-item" style="left:90%; animation-delay:1s;">🌺</div>
+
+<div class="card">
+  <div class="header">Dear Ahlawat Ji 💌</div>
+  <h1>Will you be my Valentine?</h1>
+  <p>Under the sun, moon & flowers — it’s always you 🌙🌸</p>
+
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" onmouseover="moveNo()">No 😜</button>
+  </div>
+
+  <div class="message" id="message">
+    Yay!! 💕 Valentine confirmed 🥰
+  </div>
+
+  <!-- Single animated couple with names -->
+  <div class="couple">
+    <div class="person boy">
+      <div class="head">
+        <div class="hair"></div>
+        <div class="glasses">👓</div>
+      </div>
+      <div class="body"></div>
+      <div class="name">Disheak</div>
+    </div>
+
+    <div class="heart">❤️</div>
+
+    <div class="person girl">
+      <div class="head">
+        <div class="hair"></div>
+      </div>
+      <div class="body"></div>
+      <div class="name">Nishtha</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function sayYes() {
+  document.getElementById("message").style.display = "block";
+}
+
+function moveNo() {
+  const btn = document.querySelector(".no");
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+</script>
+
+</body>
+</html>
